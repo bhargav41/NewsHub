@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_hub/constants.dart';
+import 'package:news_hub/screens/profile_page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -28,18 +30,36 @@ class _HomeState extends State<Home> {
   ];
   Widget buildNewsItem(BuildContext context, int index) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-      child: Card(
-        child: ListTile(
-          onTap: () {},
-          leading: Image.network(
-              "https://th.bing.com/th/id/R6a7739f41b55d4577480caf13d09bcb0?rik=MjRm90l0fi207g&riu=http%3a%2f%2fimages4.fanpop.com%2fimage%2fphotos%2f23400000%2fRandom-football-images-soccer-23415648-404-561.jpg&ehk=PIuEEzLcebGwqdW1AmAnfs7%2ft%2b1ApVKpchO6Lhp0EAY%3d&risl=&pid=ImgRaw"),
-          title: Text("News # $index"),
-          subtitle: Text("Rooney "),
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-      ),
-    );
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        child: Card(
+          elevation: 2.0,
+          child: ListTile(
+            minVerticalPadding: 30.0,
+            horizontalTitleGap: 20.0,
+            onTap: () {},
+            leading: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: 44,
+                  minHeight: 44,
+                  maxWidth: 64,
+                  maxHeight: 64,
+                ),
+                child: Image.network(
+                  "$newsImage",
+                  fit: BoxFit.cover,
+                )),
+            title: Text(
+              "News # $index",
+            ),
+            subtitle: Text("Rooney "),
+            trailing: Text(
+              "4/1/2021",
+              style: TextStyle(
+                color: Colors.grey[500],
+              ),
+            ),
+          ),
+        ));
   }
 
   @override
@@ -49,12 +69,23 @@ class _HomeState extends State<Home> {
         child: ListView(
           children: [
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
+              },
               leading: Icon(
                 Icons.person,
                 color: Colors.black,
               ),
               title: Text("Profile"),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+              title: Text("Log Out"),
             ),
           ],
         ),
