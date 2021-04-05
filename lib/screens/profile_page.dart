@@ -6,10 +6,9 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.green,
-        title: Center(
-          child: Text("Profile"),
-        ),
+        title: Text("Profile"),
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
@@ -19,11 +18,11 @@ class Profile extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Card(
                 shadowColor: Colors.grey,
-                elevation: 10.0,
+                elevation: 8.0,
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 25.0,
+                      height: 50.0,
                     ),
                     CircleAvatar(
                       radius: 70.0,
@@ -85,24 +84,26 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height: 50.0,
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 30.0),
             ListTile(
               leading: Icon(Icons.notifications),
               title: Text("Turn On Notifications "),
             ),
             SizedBox(height: 10.0),
             ListTile(
+              onTap: () {},
               leading: Icon(Icons.language),
               title: Text("Language Settings"),
             ),
             SizedBox(height: 10.0),
             ListTile(
+              onTap: () {},
               leading: Icon(Icons.logout),
               title: Text("Log Out"),
             ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_hub/constants.dart';
+import 'package:news_hub/screens/news_screen.dart';
 import 'package:news_hub/screens/profile_page.dart';
+import 'package:news_hub/services/data.dart';
+import 'package:news_hub/services/get_data.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -36,7 +39,10 @@ class _HomeState extends State<Home> {
           child: ListTile(
             minVerticalPadding: 30.0,
             horizontalTitleGap: 20.0,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NewsScreen(index)));
+            },
             leading: ConstrainedBox(
                 constraints: BoxConstraints(
                   minWidth: 44,
@@ -82,6 +88,14 @@ class _HomeState extends State<Home> {
             ListTile(
               onTap: () {},
               leading: Icon(
+                Icons.category,
+                color: Colors.black,
+              ),
+              title: Text("Categories"),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Icon(
                 Icons.logout,
                 color: Colors.black,
               ),
@@ -91,12 +105,9 @@ class _HomeState extends State<Home> {
         ),
       ),
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.green,
-        title: Center(
-          child: Text(
-            "News Hub",
-          ),
-        ),
+        title: Text("News Hub"),
       ),
       body: Column(
         children: [
@@ -116,11 +127,55 @@ class _HomeState extends State<Home> {
           ),
           Flexible(
             flex: 2,
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemBuilder: buildNewsItem,
-              itemCount: news.length,
+            child: FutureBuilder(
+              future: getData(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  Data data = snapshot.data;
+                  return ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemExtent: 150.0,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          child: Card(
+                            elevation: 2.0,
+                            child: Center(
+                              child: ListTile(
+                                minVerticalPadding: 10.0,
+                                horizontalTitleGap: 20.0,
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              NewsScreen(index)));
+                                },
+                                leading: Image.network(
+                                  "${data.articles[index]['urlToImage']}",
+                                  fit: BoxFit.fill,
+                                ),
+                                title: Text(
+                                  data.articles[index]['title'],
+                                ),
+                                trailing: Text(
+                                  "4/1/2021",
+                                  style: TextStyle(
+                                    color: Colors.grey[500],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ));
+                    },
+                    itemCount: data.totalResults,
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
+              },
             ),
           )
         ],
