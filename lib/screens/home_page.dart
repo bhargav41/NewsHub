@@ -10,62 +10,11 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-List<String> links = [
-  "https://i.pinimg.com/originals/71/e8/34/71e8342f21ae39df7a35aea31d7287fc.jpg",
-  "https://wallpaperaccess.com/full/3819170.jpg",
-  "https://tse4.mm.bing.net/th?id=OIP.pWIG-8d_LprU86VEQSNA-gHaEU&pid=ImgDet&rs=1",
-];
-
 class _HomeState extends State<Home> {
-  List<String> news = [
-    "News 1",
-    "News 2",
-    "News 3",
-    "News 1",
-    "News 2",
-    "News 3",
-    "News 1",
-    "News 2",
-    "News 3",
-    "News 1",
-    "News 2",
-    "News 3",
-  ];
-  Widget buildNewsItem(BuildContext context, int index) {
-    return Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-        child: Card(
-          elevation: 2.0,
-          child: ListTile(
-            minVerticalPadding: 30.0,
-            horizontalTitleGap: 20.0,
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NewsScreen(index)));
-            },
-            leading: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minWidth: 44,
-                  minHeight: 44,
-                  maxWidth: 64,
-                  maxHeight: 64,
-                ),
-                child: Image.network(
-                  "$newsImage",
-                  fit: BoxFit.cover,
-                )),
-            title: Text(
-              "News # $index",
-            ),
-            subtitle: Text("Rooney "),
-            trailing: Text(
-              "4/1/2021",
-              style: TextStyle(
-                color: Colors.grey[500],
-              ),
-            ),
-          ),
-        ));
+  String dateTime(String date_time) {
+    String datetime = date_time;
+    String date = datetime.substring(0, 10);
+    return date;
   }
 
   @override
@@ -143,14 +92,21 @@ class _HomeState extends State<Home> {
                             elevation: 2.0,
                             child: Center(
                               child: ListTile(
-                                minVerticalPadding: 10.0,
+                                minVerticalPadding: 5.0,
                                 horizontalTitleGap: 20.0,
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              NewsScreen(index)));
+                                          builder: (context) => NewsScreen(
+                                              data.articles[index]
+                                                  ['urlToImage'],
+                                              data.articles[index]['title'],
+                                              dateTime(data.articles[index]
+                                                  ['publishedAt']),
+                                              data.articles[index]
+                                                  ['description'],
+                                                  data.articles[index]['url'])));
                                 },
                                 leading: Image.network(
                                   "${data.articles[index]['urlToImage']}",
@@ -158,9 +114,11 @@ class _HomeState extends State<Home> {
                                 ),
                                 title: Text(
                                   data.articles[index]['title'],
+                                  overflow: TextOverflow.fade,
+                                  maxLines: 5,
                                 ),
                                 trailing: Text(
-                                  "4/1/2021",
+                                  dateTime(data.articles[index]['publishedAt']),
                                   style: TextStyle(
                                     color: Colors.grey[500],
                                   ),
