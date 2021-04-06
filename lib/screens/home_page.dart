@@ -70,6 +70,15 @@ class _HomeState extends State<Home> {
               future: getData(),
               builder: (context, snapshot) {
                 Data data = snapshot.data;
+                int index = 0;
+                String imageReturner(int index_new) {
+                  index = index + 1;
+                  while (data.articles[index_new]['urlToImage'] == null)
+                    index = index_new + 1;
+
+                  return data.articles[index]['urlToImage'];
+                }
+
                 return CarouselSlider(
                   options: CarouselOptions(
                     height: 180.0,
@@ -88,7 +97,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[0]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -99,7 +108,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[1]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -110,7 +119,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[2]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -121,7 +130,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[3]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -132,7 +141,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[4]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -143,7 +152,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[5]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -154,7 +163,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[6]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -165,7 +174,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[7]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -176,7 +185,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[8]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -187,7 +196,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(7.0),
                           image: DecorationImage(
                             image: NetworkImage(
-                              data.articles[9]['urlToImage'],
+                              imageReturner(index),
                             ),
                             fit: BoxFit.cover,
                           ),
