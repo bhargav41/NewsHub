@@ -9,7 +9,7 @@ import 'dart:developer' as developer;
 
 Future<Data> getData() async {
   var uri = Uri.https(api, "/v2/top-headlines",
-      {"sources": "techcrunch", "apiKey": "b2014968696348f6afa6333cb8eaa84d"});
+      {"country": "in", "apiKey": "b2014968696348f6afa6333cb8eaa84d"});
   http.Response response = await http.get(uri);
   print(uri);
 

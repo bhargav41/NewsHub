@@ -27,10 +27,10 @@ class NewsScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 30.0),
         child: GestureDetector(
-          // onTap: () {
-          //   Navigator.push(context,
-          //       MaterialPageRoute(builder: (context) => ArticleView(url)));
-          // },
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ArticleView(url)));
+          },
           child: Card(
             elevation: 8.0,
             child: Container(

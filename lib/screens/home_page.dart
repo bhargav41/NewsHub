@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:news_hub/constants.dart';
 import 'package:news_hub/screens/news_screen.dart';
@@ -60,16 +61,144 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 10.0,
+          ),
           Flexible(
             flex: 1,
-            child: Container(
-              height: 200.0,
-              width: MediaQuery.of(context).size.width / 1.01,
-              color: Colors.grey[200],
-              child: Text(
-                "Image slider here",
-              ),
+            child: FutureBuilder(
+              future: getData(),
+              builder: (context, snapshot) {
+                Data data = snapshot.data;
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    height: 180.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    aspectRatio: 16 / 9,
+                    autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(seconds: 5),
+                    viewportFraction: 0.8,
+                  ),
+                  items: [
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[0]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[1]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[2]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[3]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[4]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[5]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[6]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[7]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[8]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                    Container(
+                        margin: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              data.articles[9]['urlToImage'],
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ))
+                  ],
+                );
+              },
             ),
+          ),
+          SizedBox(
+            height: 10.0,
           ),
           SizedBox(
             height: 10.0,
@@ -106,7 +235,7 @@ class _HomeState extends State<Home> {
                                                   ['publishedAt']),
                                               data.articles[index]
                                                   ['description'],
-                                                  data.articles[index]['url'])));
+                                              data.articles[index]['url'])));
                                 },
                                 leading: Image.network(
                                   "${data.articles[index]['urlToImage']}",
