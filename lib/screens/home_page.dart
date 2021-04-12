@@ -79,130 +79,132 @@ class _HomeState extends State<Home> {
                   return data.articles[index]['urlToImage'];
                 }
 
-                return CarouselSlider(
-                  options: CarouselOptions(
-                    height: 180.0,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                    aspectRatio: 16 / 9,
-                    autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(seconds: 5),
-                    viewportFraction: 0.8,
-                  ),
-                  items: [
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                    Container(
-                        margin: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              imageReturner(index),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ))
-                  ],
-                );
+                return snapshot.hasData
+                    ? CarouselSlider(
+                        options: CarouselOptions(
+                          height: 180.0,
+                          enlargeCenterPage: true,
+                          autoPlay: true,
+                          aspectRatio: 16 / 9,
+                          autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                          enableInfiniteScroll: true,
+                          autoPlayAnimationDuration: Duration(seconds: 5),
+                          viewportFraction: 0.8,
+                        ),
+                        items: [
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              )),
+                          Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    imageReturner(index),
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ))
+                        ],
+                      )
+                    : Center(child: CircularProgressIndicator());
               },
             ),
           ),
